@@ -23,15 +23,15 @@ function sendEmail(email,pdfFile){
   var dShift = ss.getRange(lr,4).getValue();
   var jobDetails = ss.getRange(lr,8).getValue();
 
-  var html = HtmlService.createTemplateFromFile("msg.html");
+  var html = HtmlService.createTemplateFromFile("msg.html"); //here the template file is in msg.html
   var htmlText = html.getRawContent().replace("{Engineer Name}",enggName).replace("{Engineer Name}",enggName).replace("{Mistry Name}",misName).replace("{Mazdoor Name}",mazName).replace("{Driver Name}",driName).replace("{Factory O/T}",facOt).replace("{Non Factory O/T}",nonfacOt).replace("{Date of duty}",dateDuty).replace("{Duty Shift}",dShift).replace("{Job details}",jobDetails);
     GmailApp.sendEmail(email,pdfFile.getName(),"Please find the ECU Overtime Slip as attached herewith",
     {
     htmlBody: htmlText,
     attachments: [pdfFile],
     name: 'Overtime Module',
-    cc: "bapan.maity@rpsg.in",
-    bcc: 'aritra.sarkar@rpsg.in'
+    cc: "EMAIL_ID_SOMEONE@rpsg.in", //where mail to be sent to concerned engg
+    bcc: 'EMAIL_ID_SOMEONE@rpsg.in'//where mail to be sent to concerned engg
     })
 
 }
@@ -40,9 +40,9 @@ function sendEmail(email,pdfFile){
 
 function createPdf(info){
 
-  var templateDoc = DriveApp.getFileById("1r-_slRT8vXvbgPlPpGSKyzuFIQaOdqIs4GodOnW-rno");
-  var pdfFolder = DriveApp.getFolderById("1W0xj2e05-EKTf6_6CKOaE5pZpG_YRHi-");
-  var tempFolder = DriveApp.getFolderById("1bdyIqttKJYmJrKj88TItLYuvmhcKH5aO");
+  var templateDoc = DriveApp.getFileById("1r-_slRT8vXvbgPlPpGSKyzuFIQaOdqIs4GodOnW-rno"); //GDRIVE ID
+  var pdfFolder = DriveApp.getFolderById("1W0xj2e05-EKTf6_6CKOaE5pZpG_YRHi-"); //PDF FOLDER ID WHERE PDF WILL GET STORED
+  var tempFolder = DriveApp.getFolderById("1bdyIqttKJYmJrKj88TItLYuvmhcKH5aO"); //A TEMPORARY FOLDER NEEDS TO BE MADE
 
 var tempDoc = templateDoc.makeCopy(tempFolder);
 const openDoc = DocumentApp.openById(tempDoc.getId());
