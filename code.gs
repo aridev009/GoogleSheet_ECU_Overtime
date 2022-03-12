@@ -13,8 +13,8 @@ function onFormSubmit(e){
 function sendEmail(email,pdfFile){
   var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Mother OT Response');
   var lr = ss.getLastRow();
-  var enggName = ss.getRange(lr,15).getValue();
-  var misName = ss.getRange(lr,5).getValue();
+  var enggName = ss.getRange(lr,15).getValue();  //15 is the column where engineer name gets entered.
+  var misName = ss.getRange(lr,5).getValue(); //mistry column
   var mazName = ss.getRange(lr,6).getValue();
   var driName = ss.getRange(lr,7).getValue();
   var facOt = ss.getRange(lr,13).getValue();
